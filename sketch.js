@@ -1,27 +1,23 @@
 let facemesh;
 let video;
 let predictions = [];
-// 指定要連接的facemesh點位編號
 const indices = [409,270,269,267,0,37,39,40,185,61,146,91,181,84,17,314,405,321,375,291];
 
 function setup() {
-  // 將畫布置中
   let cnv = createCanvas(640, 480);
   cnv.style('display', 'block');
   cnv.parent(document.body);
-  // 置中畫布
   cnv.position((windowWidth - width) / 2, (windowHeight - height) / 2);
 
   video = createCapture(VIDEO);
   video.size(width, height);
   video.hide();
 
-  facemesh = ml5.facemesh(video, modelReady);
+  facemesh = ml5.faceMesh(video, modelReady);
   facemesh.on('predict', gotResults);
 }
 
 function modelReady() {
-  // 模型載入完成
 }
 
 function gotResults(results) {
